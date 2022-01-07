@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Fade from "react-reveal";
 
 function Section({
   title,
@@ -22,7 +23,7 @@ function Section({
   `;
 
   const ItemText = styled.div`
-    padding-top: 1vh;
+    padding-top: 10vh;
     text-align: center;
   `;
 
@@ -64,17 +65,29 @@ function Section({
   const Buttons = styled.div``;
   return (
     <Wrap>
-      <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </ItemText>
+      <Fade bottom>
+        <ItemText>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </ItemText>
+      </Fade>
+      {/* <Fade top> */}
       <Buttons>
         <ButtonGroup>
-          <LeftButton>{leftBtnText}</LeftButton>
-          {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+          <Fade left>
+            <LeftButton>{leftBtnText}</LeftButton>
+          </Fade>
+          {rightBtnText && (
+            <Fade right>
+              <RightButton>{rightBtnText}</RightButton>
+            </Fade>
+          )}
         </ButtonGroup>
-        <DownArrow src="/images/down-arrow.svg" />
+        <Fade top>
+          <DownArrow src="/images/down-arrow.svg" />
+        </Fade>
       </Buttons>
+      {/* </Fade> */}
     </Wrap>
   );
 }
